@@ -1,0 +1,1 @@
+NUM_PRIOS = 8

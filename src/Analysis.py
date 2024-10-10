@@ -7,6 +7,8 @@ from Parser.StreamParser import StreamParser
 
 from ShortestPathManager import ShortestPathManger
 
+MAX_PRIO = 8
+
 def main():
     if len(sys.argv) != 3:
         print("Usage: python analysis.py [topology.csv] [streams.csv]")
@@ -22,12 +24,31 @@ def main():
 
     shortest_path_manager = ShortestPathManger(topology)
 
-    print(streams)
+    for s in streams:
+        route = shortest_path_manager.get_route(s.src, s.dest)
+        for device in route[1:-1]:
+            device.add_stream(s)
+
+            
 
     for s in streams:
         route = shortest_path_manager.get_route(s.src, s.dest)
         for hop_pair in pairwise(route):
             pass
+
+
+            """
+            bH = 
+            bI =
+            r = s.rate
+            rH = 
+            l = s.size
+            delay = ((bH + bI) / (r - rH)) + (l / r)
+            
+            
+            delay = 0"""
+
+            
 
     
 
