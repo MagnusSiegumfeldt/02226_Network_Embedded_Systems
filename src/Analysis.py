@@ -36,7 +36,6 @@ def main():
     for s in streams:
         
         route = shortest_path_manager.get_route(s.src, s.dest)
-        print(route)
         for device in route[1:-1]:
             
             device.add_stream(s)
@@ -60,26 +59,26 @@ def main():
 
 def compute_hop_delay(topology, src : Switch, dst : Switch, stream : Stream):
     
-    priority = stream.pcp
+    
     link = topology.get_link(src, dst)
     
     streams_through_link = link.get_streams()
-    
     max_delay = 0
-    I = filter(lambda x: x is not None, [s if s.pcp == priority else None for s in streams_through_link])
+    I = filter(lambda x: x is not None, [s if s.pcp == stream.pcp else None for s in streams_through_link])
     for j in I:
-    
+        priority = j.pcp   
         bj = j.size
         lj = j.size
 
         r = link.rate
-
         bH = sum([s.size if s.pcp > priority else 0 for s in streams_through_link])
-        bCj = sum([s.size if (s.pcp == j.pcp and s != stream) else 0 for s in streams_through_link])
-        lL = max([s.size if s.pcp < priority else 0 for s in streams_through_link])
+        bCj = sum([s.size if (s.pcp == priority and s != j) else 0 for s in streams_through_link])
+        lL = max([s.size if s.pcp < priority else 0 for s in streams_through_link], default=0)
         rhat_H = sum([s.rate if s.pcp > priority else 0 for s in streams_through_link])
         
         # with j in I. I defined as all streams with same link and same priority
+        
+
         delay = (((bH + bCj + (bj - lj) + lL) / (r - rhat_H)) + (lj / r))
         max_delay = max(max_delay, delay)
         
