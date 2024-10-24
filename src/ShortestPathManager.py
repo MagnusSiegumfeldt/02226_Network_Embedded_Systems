@@ -13,7 +13,7 @@ class ShortestPathManger:
     def __bfs(self, topology : Topology, start):
         visited = { start.name: True }
         distances = { start.name: 0}
-        routes = { start.name: [start.name]}
+        routes = { start.name: [start]}
         
 
         queue = deque([start])
@@ -25,7 +25,7 @@ class ShortestPathManger:
                     queue.append(adj)
                     
                     distances[adj.name] = distances[node.name] + 1
-                    routes[adj.name] = routes[node.name].copy() + [adj.name]
+                    routes[adj.name] = routes[node.name].copy() + [adj]
                     visited[adj.name] = True
         return distances, routes
 

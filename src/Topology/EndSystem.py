@@ -3,3 +3,5 @@ class EndSystem:
         self.name = name
         self.ports = [None for _ in range(ports)]
         self.domain = domain
+    def __repr__(self):
+        return self.name

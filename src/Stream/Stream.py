@@ -1,3 +1,4 @@
+from itertools import pairwise
 
 class Stream:
 
@@ -14,7 +15,17 @@ class Stream:
         self.burst = self.size
         self.rate = self.size / self.period
 
+        self.next_in_route = {}
+
+    def set_path(self, route):
+        for src, dst in pairwise(route):
+            self.next_in_route[src] = dst
+        
+    def get_next_hop(self, current_hop):
+        return self.next_in_route[current_hop]
+
     def __str__(self) -> str:
         return f"Name: {self.name}, PCP: {self.pcp}"
     def __repr__(self) -> str:
         return self.__str__()
+    

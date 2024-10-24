@@ -15,3 +15,9 @@ class Switch:
         for i in range(prio + 1, NUM_PRIOS):
             streams_with_higher_prio += self.streams[i]
         return streams_with_higher_prio
+
+    def get_streams_with_prop_excluding(self, prio, stream):
+        return filter()
+
+    def __repr__(self):
+        return self.name

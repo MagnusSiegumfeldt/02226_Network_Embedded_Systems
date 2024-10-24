@@ -14,10 +14,17 @@ class Topology:
         self.devices[name] = Switch(name, ports, domain)
 
     def add_link(self, name, ep1, port1, ep2, port2, domain):
-        self.links[name] = Link(name, ep1, port1 - 1, ep2, port2 - 1, domain)
+        self.links[(ep1, ep2)] = Link(name, ep1, port1 - 1, ep2, port2 - 1, domain)
         self.devices[ep1].ports[port1 - 1] = self.devices[ep2]
         self.devices[ep2].ports[port2 - 1] = self.devices[ep1]
 
+    def get_link(self, src, dst) -> Link:
+        if (src.name, dst.name) in self.links:
+            return self.links[(src.name, dst.name)]
+        if (dst.name, src.name) in self.links:
+            return self.links[(dst.name, src.name)]
+        assert False
+    
     def get_end_systems(self):
         l = []
         for d in self.devices.values():

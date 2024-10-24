@@ -6,3 +6,11 @@ class Link:
         self.ep2 = ep2
         self.port2 = port2
         self.domain = domain
+        self.rate = 10**9
+        self.streams = []
+
+    def add_stream(self, stream):
+        self.streams.append(stream)
+    
+    def get_streams(self):
+        return self.streams
