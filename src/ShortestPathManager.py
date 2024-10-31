@@ -1,7 +1,7 @@
 from collections import deque
 from Topology.Topology import Topology
 
-class ShortestPathManger:
+class ShortestPathManager:
     def __init__(self, topology : Topology):
         end_systems = topology.get_end_systems()
         self.distance_table = {}
