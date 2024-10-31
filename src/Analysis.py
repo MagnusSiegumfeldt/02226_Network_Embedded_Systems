@@ -44,6 +44,7 @@ def main():
     for s in streams:
         route = shortest_path_manager.get_route(s.src, s.dest)
         for (src, dst) in pairwise(route):
+            src.add_stream(s)
             link = topology.get_link(src, dst)
             link.add_stream(s)
 
@@ -55,16 +56,38 @@ def main():
             hop_delay = compute_hop_delay(topology, *hop_pair, s)
             stream_delay += hop_delay
 
-        print("Stream:", s, "Delay", round(stream_delay * 10 ** 6, 3), route)
+        print(s, "Delay:", round(stream_delay * 10 ** 6, 3), "\t", route)
 
 def compute_hop_delay(topology, src : Switch, dst : Switch, stream : Stream):
-    
-    
     link = topology.get_link(src, dst)
     
+    max_delay = 0
+    bH = sum(x.size for x in filter(lambda x: x.pcp > stream.pcp, src.get_streams())) # Sum size of high prio streams into src
+    
+    lL = max([x.size for x in filter(lambda x: x.pcp < stream.pcp, src.get_streams())], default=0) # Find max of lower prio streams into src
+    
+    r = link.rate
+    rH = sum(x.rate for x in filter(lambda x: x.pcp > stream.pcp, src.get_streams()))
+    
+    streams_through_link = link.get_streams() # All Streams through (src, dst)
+    I = filter(lambda x: x.pcp == stream.pcp, streams_through_link)
+    for j in I:
+        bCj = sum(x.size for x in filter(lambda x: x.pcp == j.pcp and x != j, streams_through_link))
+        
+        bj = j.size
+        lj = j.size
+    
+        delay = (((bH + bCj + (bj - lj) + lL) / (r - rH)) + (lj / r))
+        max_delay = max(max_delay, delay)
+        
+    return max_delay
+
+def compute_hop_delay2(topology, src : Switch, dst : Switch, stream : Stream):
+    link = topology.get_link(src, dst)
     streams_through_link = link.get_streams()
     max_delay = 0
-    I = filter(lambda x: x is not None, [s if s.pcp == stream.pcp else None for s in streams_through_link])
+    
+    I = filter(lambda x: x.pcp == stream.pcp, streams_through_link)
     for j in I:
         priority = j.pcp   
         bj = j.size
@@ -83,8 +106,6 @@ def compute_hop_delay(topology, src : Switch, dst : Switch, stream : Stream):
         max_delay = max(max_delay, delay)
         
     return max_delay
-
-
             
 
     
