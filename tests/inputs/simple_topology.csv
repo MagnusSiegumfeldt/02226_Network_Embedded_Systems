@@ -1,0 +1,7 @@
+ES,A,2,
+SW,B,3,
+ES,C,2,
+ES,D,2,
+LINK,e1,A,0,B,0,
+LINK,e2,B,1,C,0,
+LINK,e3,B,2,D,0,

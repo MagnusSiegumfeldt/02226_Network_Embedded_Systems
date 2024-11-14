@@ -1,3 +1,5 @@
+
+
 from Topology.Topology import Topology
 
 class TopologyParser:
