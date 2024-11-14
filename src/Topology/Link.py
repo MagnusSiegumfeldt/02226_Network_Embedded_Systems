@@ -6,7 +6,7 @@ class Link:
         self.ep2 = ep2
         self.port2 = port2
         self.domain = domain
-        self.rate = 10**9
+        self.rate = 10**9 / 8
         self.streams = []
 
     def add_stream(self, stream):

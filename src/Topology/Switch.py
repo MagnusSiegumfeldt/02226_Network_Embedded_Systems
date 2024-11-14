@@ -1,5 +1,7 @@
 from Constants import *
 
+# TODO: add shaped queues, such that an added stream with its priority and *next hop* will be translated to the according shaped queue
+
 class Switch: 
     def __init__(self, name : str, ports : int, domain : int):
         self.name = name
