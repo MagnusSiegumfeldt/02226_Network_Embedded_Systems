@@ -1,9 +1,8 @@
-import pytest
-
-
 from Parser.TopologyParser import TopologyParser
 from Parser.StreamParser import StreamParser
 
+
+# Verifies that topology is parsed correctly
 def test_parse_topology_1():
     parser = TopologyParser()
 
@@ -24,6 +23,8 @@ def test_parse_topology_2():
     assert(len(topology.links) == 409)
     """
 
+
+# Verifies that streams are parsed correctly.
 def test_parse_streams_1():
     parser = StreamParser()
 
