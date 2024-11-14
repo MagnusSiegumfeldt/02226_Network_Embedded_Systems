@@ -13,7 +13,6 @@ from Topology import Link
 
 MAX_PRIO = 8
 BANDWIDTH = (10 ** 9) / 8 # in bits
-# TODO: WE ARE NOT USING BANDWIDTH
 
     
 def main():
@@ -42,7 +41,7 @@ def main():
     for s in streams:
         route = shortest_path_manager.get_route(s.src, s.dest)
         for (src, dst) in pairwise(route):
-            src.add_stream(s)
+            src.add_stream(s, dst)
             link = topology.get_link(src, dst)
             link.add_stream(s)
 
