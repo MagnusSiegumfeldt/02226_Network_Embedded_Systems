@@ -11,13 +11,13 @@ class Switch:
         self.streams = [[] for _ in range(NUM_PRIOS)]
         self.shaped_queues: dict = {}
     
-    def add_stream(self, stream, dst):
+    def add_stream(self, stream):
         self.streams[stream.pcp].append(stream)
-        shaped_queues_for_dst = self.shaped_queues.get(dst)
+        """shaped_queues_for_dst = self.shaped_queues.get(dst)
         if shaped_queues_for_dst is None:
             self.shaped_queues[dst] = {stream.pcp: [stream]}
         else: 
-            shaped_queues_for_dst.get(dst).get(stream.pcp).append(stream)
+            shaped_queues_for_dst.get(dst).get(stream.pcp).append(stream)"""
     
     def get_all_shaped_queues(self):
         return deepcopy(self.shaped_queues)

@@ -19,7 +19,7 @@ def main():
     if len(sys.argv) != 3:
         print("Usage: python analysis.py [topology.csv] [streams.csv]")
         return
-    
+
     topology_file_name = sys.argv[1]
     streams_file_name = sys.argv[2]
 
@@ -41,27 +41,28 @@ def main():
     for s in streams:
         route = shortest_path_manager.get_route(s.src, s.dest)
         for (src, dst) in pairwise(route):
-            src.add_stream(s, dst)
+            src.add_stream(s)
             link = topology.get_link(src, dst)
             link.add_stream(s)
 
     for s in streams:
         stream_delay = 0
         route = shortest_path_manager.get_route(s.src, s.dest)
-        print(list(pairwise(route)))
-        for hop_pair in pairwise(route):
-
-            hop_delay = compute_hop_delay(topology, *hop_pair, s)
+        print([((i), (i + 1) % len(route), (i + 2) % len(route)) for i in range(len(route))])
+        print("WTF")
+        for hop_triplet in [((i), (i + 1) % len(route), (i + 2) % len(route)) for i in range(len(route))]:
+            hop_delay = compute_hop_delay(topology, *hop_triplet, s)
             stream_delay += hop_delay
 
         print(s, "Delay:", round(stream_delay * 10 ** 6, 3), "\t", route)
 
 
-def compute_hop_delay(topology, src : Switch, dst : Switch, stream : Stream):
+def compute_hop_delay(topology, src : Switch, dst : Switch, next_dst: Switch, stream : Stream):
     link = topology.get_link(src, dst)
+    next_link = topology.get_link(dst, next_dst)
 
-    H = filter(lambda x: x.pcp > stream.pcp, link.get_streams())
-    L = filter(lambda x: x.pcp < stream.pcp, link.get_streams())
+    H = filter(lambda x: x.pcp > stream.pcp and (x in next_link.get_streams()), link.get_streams())
+    L = filter(lambda x: x.pcp < stream.pcp and (x in next_link.get_streams()), link.get_streams())
 
     bH = sum(x.size for x in H) # Sum size of high prio streams out of src
     rH = sum(x.rate for x in H) # Sum rate of high prio streams out of src
@@ -70,13 +71,13 @@ def compute_hop_delay(topology, src : Switch, dst : Switch, stream : Stream):
        
     r = link.rate
 
-    I = filter(lambda x: x.pcp == stream.pcp, link.get_streams())
+    I = filter(lambda x: x.pcp == stream.pcp and (x in next_link.get_streams()), link.get_streams())
     max_delay = 0
     for j in I:
         bj = j.size
         lj = j.size
 
-        Cj = filter(lambda x: x.pcp == stream.pcp and x != j, link.get_streams())
+        Cj = filter(lambda x: x.pcp == stream.pcp and x != j and (x in next_link.get_streams()), link.get_streams())
         bCj = sum(x.size for x in Cj)
 
         delay = (((bH + bCj + (bj - lj) + lL) / (r - rH)) + (lj / r))
