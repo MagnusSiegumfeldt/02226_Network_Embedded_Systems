@@ -12,12 +12,14 @@ from Stream import Stream
 from Topology import Link
 
 MAX_PRIO = 8
-BANDWIDTH = 10 ** 9 # in bits
+BANDWIDTH = (10 ** 9) / 8 # in bits
+# TODO: WE ARE NOT USING BANDWIDTH
 
     
 def main():
     if len(sys.argv) != 3:
         print("Usage: python analysis.py [topology.csv] [streams.csv]")
+        return
     
     topology_file_name = sys.argv[1]
     streams_file_name = sys.argv[2]
