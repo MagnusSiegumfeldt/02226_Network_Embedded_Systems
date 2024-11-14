@@ -10,8 +10,7 @@ from Topology import Switch
 from Stream import Stream
 from Topology import Link
 
-MAX_PRIO = 8
-BANDWIDTH = 10 ** 9 # in bits
+from Constants import *
 
 
 class Analyzer:
@@ -35,7 +34,6 @@ class Analyzer:
         for s in streams:
             stream_delay = 0
             route = shortest_path_manager.get_route(s.src, s.dest)
-            
             for hop_pair in pairwise(route):
 
                 hop_delay = compute_hop_delay(topology, *hop_pair, s)
@@ -48,23 +46,23 @@ class Analyzer:
 def compute_hop_delay(topology, src : Switch, dst : Switch, stream : Stream):
     link = topology.get_link(src, dst)
 
-    H = filter(lambda x: x.pcp > stream.pcp, link.get_streams())
-    L = filter(lambda x: x.pcp < stream.pcp, link.get_streams())
+    H = list(filter(lambda x: x.pcp > stream.pcp, link.get_streams()))
+    L = list(filter(lambda x: x.pcp < stream.pcp, link.get_streams()))
 
     bH = sum(x.size for x in H) # Sum size of high prio streams out of src
     rH = sum(x.rate for x in H) # Sum rate of high prio streams out of src
     lL = max([x.size for x in L], default=0)
 
-       
+    
     r = link.rate
 
-    I = filter(lambda x: x.pcp == stream.pcp, link.get_streams())
+    I = list(filter(lambda x: x.pcp == stream.pcp, link.get_streams()))
     max_delay = 0
     for j in I:
         bj = j.size
         lj = j.size
 
-        Cj = filter(lambda x: x.pcp == stream.pcp and x != j, link.get_streams())
+        Cj = list(filter(lambda x: x.pcp == stream.pcp and x != j, link.get_streams()))
         bCj = sum(x.size for x in Cj)
 
         delay = (((bH + bCj + (bj - lj) + lL) / (r - rH)) + (lj / r))

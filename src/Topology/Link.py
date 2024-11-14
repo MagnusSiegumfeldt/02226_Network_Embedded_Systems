@@ -1,3 +1,5 @@
+from Constants import *
+
 class Link: 
     def __init__(self, name : str, ep1 : str, port1 : int, ep2, port2 : int, domain : int):
         self.name = name
@@ -6,7 +8,7 @@ class Link:
         self.ep2 = ep2
         self.port2 = port2
         self.domain = domain
-        self.rate = 10**9 / 8
+        self.rate = BANDWIDTH
         self.streams = []
 
     def add_stream(self, stream):

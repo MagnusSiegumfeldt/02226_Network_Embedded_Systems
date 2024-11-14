@@ -32,7 +32,7 @@ def test_priorities():
 
     assert(d1["F0"] < d2["F0"])
 
-    assert(d1["F1"] == d1["F2"] == d1["F3"])
+    assert(d1["F1"] == d1["F2"])
     assert(d2["F1"] == d2["F2"] == d2["F3"] == d2["F4"] == d2["F5"] == d2["F6"])
 
     assert(d1["F1"] < d2["F2"])

@@ -1,1 +1,2 @@
 NUM_PRIOS = 8
+BANDWIDTH = 10**9 / 8

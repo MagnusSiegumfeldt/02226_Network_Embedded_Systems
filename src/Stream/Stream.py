@@ -25,7 +25,7 @@ class Stream:
         return self.next_in_route[current_hop]
 
     def __str__(self) -> str:
-        return f"{self.name}\t{self.pcp}, \t|{int(self.burst)}|\t"
+        return f"{self.name}"
     def __repr__(self) -> str:
         return self.__str__()
     
