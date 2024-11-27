@@ -13,7 +13,7 @@ def check_link(topology, e1, e2):
 def test_parse_topology_1():
     parser = TopologyParser()
 
-    topology = parser.parse("./tests/inputs/simple_topology.csv")    
+    topology = parser.parse("./tests/inputs/topologies/t_simple.csv")    
     assert(len(topology.devices) == 4)
     assert(len(topology.links) == 3)
     
@@ -38,7 +38,7 @@ def test_parse_topology_1():
 def test_routing_topology_2():
     parser = TopologyParser()
 
-    topology = parser.parse("./tests/inputs/medium_topology.csv")    
+    topology = parser.parse("./tests/inputs/topologies/t_medium.csv")    
     assert(len(topology.devices) == 8)
     assert(len(topology.links) == 8)
     
@@ -81,12 +81,11 @@ def check_stream(streams, str, src, dst, sz, prd):
 def test_parse_streams_1():
     parser = StreamParser()
 
-    streams = parser.parse("./tests/inputs/simple_streams.csv")    
-    assert(len(streams) == 6)
+    streams = parser.parse("./tests/inputs/streams/s_simple1.csv")    
+    assert(len(streams) == 3)
     
-    assert(check_stream(streams, "F0", "A", "C", 80, 20000))
-    assert(check_stream(streams, "F1", "A", "C", 80, 20000))
-    assert(check_stream(streams, "F2", "D", "C", 80, 20000))
-    assert(check_stream(streams, "F3", "D", "C", 80, 20000))
+    assert(check_stream(streams, "S1", "A", "C", 80, 20000))
+    assert(check_stream(streams, "S2", "A", "C", 80, 20000))
+    assert(check_stream(streams, "S3", "A", "D", 80, 20000))
 
     

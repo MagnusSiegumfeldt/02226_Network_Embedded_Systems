@@ -11,7 +11,7 @@ def check_route(route, res):
 def test_routing_1():
     parser = TopologyParser()
 
-    topology = parser.parse("./tests/inputs/simple_topology.csv")    
+    topology = parser.parse("./tests/inputs/topologies/t_simple.csv")    
     spm = ShortestPathManager(topology)
     assert(check_route(spm.get_route("A", "B"), ["A", "B"]))
     assert(check_route(spm.get_route("A", "C"), ["A", "B", "C"]))
@@ -21,7 +21,7 @@ def test_routing_1():
 def test_routing_2():
     parser = TopologyParser()
 
-    topology = parser.parse("./tests/inputs/medium_topology.csv")    
+    topology = parser.parse("./tests/inputs/topologies/t_medium.csv")    
     spm = ShortestPathManager(topology)
     
     assert(check_route(spm.get_route("C", "G"), ["C", "D", "E", "G"]) or check_route(spm.get_route("C", "G"), ["C", "F", "H", "G"]))
