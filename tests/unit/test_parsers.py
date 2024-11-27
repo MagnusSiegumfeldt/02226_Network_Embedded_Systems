@@ -10,7 +10,6 @@ def check_device(topology, n, t):
 def check_link(topology, e1, e2):
     return any((e1 == a and e2 == b) or (e1 == b and e2 == a) for (a, b) in topology.links.keys())
 
-# Verifies that topology is parsed correctly
 def test_parse_topology_1():
     parser = TopologyParser()
 
@@ -76,10 +75,18 @@ def test_routing_topology_2():
     assert(not check_link(topology, "G", "F"))
 
 
-# Verifies that streams are parsed correctly.
+def check_stream(streams, str, src, dst, sz, prd):
+    return any(str == stream.name and src == stream.src and dst == stream.dest and sz == stream.size and prd == stream.period for stream in streams)
+
 def test_parse_streams_1():
     parser = StreamParser()
 
     streams = parser.parse("./tests/inputs/simple_streams.csv")    
     assert(len(streams) == 6)
+    
+    assert(check_stream(streams, "F0", "A", "C", 80, 20000))
+    assert(check_stream(streams, "F1", "A", "C", 80, 20000))
+    assert(check_stream(streams, "F2", "D", "C", 80, 20000))
+    assert(check_stream(streams, "F3", "D", "C", 80, 20000))
+
     
