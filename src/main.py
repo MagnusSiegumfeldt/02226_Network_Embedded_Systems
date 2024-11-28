@@ -9,7 +9,7 @@ from Output import OutputGenerator
 
 def main():
     if len(sys.argv) != 4:
-        print("Usage: python main.py [topology.csv] [streams.csv] [path/to/output/csv]")
+        print("Usage: python main.py [topology.csv] [streams.csv] [output.csv]")
         return
     
     topology_file_name = sys.argv[1]
