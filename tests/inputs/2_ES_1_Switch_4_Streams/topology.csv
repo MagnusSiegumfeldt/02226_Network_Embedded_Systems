@@ -1,0 +1,5 @@
+SW,Switch_1,2,
+ES,ES_1,1,
+ES,ES_2,1,
+LINK,Link_1,ES_1,1,Switch_1,1,
+LINK,Link_2,ES_2,1,Switch_1,2,

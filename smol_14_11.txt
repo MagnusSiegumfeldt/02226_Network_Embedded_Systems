@@ -1,0 +1,12 @@
+{'VLAN_0_Flow_0': 4.8,
+ 'VLAN_0_Flow_1': 8.0,
+ 'VLAN_0_Flow_2': 11.2,
+ 'VLAN_0_Flow_3': 12.8,
+ 'VLAN_0_Flow_4': 4.8,
+ 'VLAN_0_Flow_5': 8.0,
+ 'VLAN_0_Flow_6': 11.2,
+ 'VLAN_0_Flow_7': 12.8,
+ 'VLAN_0_Flow_8': 4.8,
+ 'VLAN_0_Flow_9': 8.0,
+ 'VLAN_0_Flow_10': 11.2,
+ 'VLAN_0_Flow_11': 12.8}

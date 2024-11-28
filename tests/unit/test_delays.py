@@ -28,5 +28,16 @@ def test_delay_calculation():
     
     
 
+def test_delay_calculation_4_streams_2_ES_1_Switch():
+    topology_parser = TopologyParser()
+    topology = topology_parser.parse("./tests/inputs/2_ES_1_Switch_4_Streams/topology.csv")
 
+    stream_parser = StreamParser()
+    streams = stream_parser.parse("./tests/inputs/2_ES_1_Switch_4_Streams/streams.csv")
 
+    analyzer = Analyzer()
+    delays = analyzer.analyse(topology, streams)
+
+    expected = {}
+    expected["F0"] = round((778 + 783) / 10**9 + 878 / 10**9)
+    assert(delays["F0"] == expected["F0"])
