@@ -14,7 +14,7 @@ def test_delay_calculation_1():
     streams = stream_parser.parse("./tests/inputs/streams/s_delay1.csv")    
 
     analyzer = Analyzer()
-    delays = analyzer.analyse(topology, streams)
+    delays, _ = analyzer.analyse(topology, streams)
 
     expected = {}
     expected["F0"] = round(((240000 / (BANDWIDTH - (160000 / 4000 + 80000 / 3000))) + (320000/BANDWIDTH)) * 10 ** 6, 3)
@@ -36,7 +36,7 @@ def test_delay_calculation_2():
     streams = stream_parser.parse("./tests/inputs/streams/s_simple1.csv")    
 
     analyzer = Analyzer()
-    delays = analyzer.analyse(topology, streams)
+    delays, _ = analyzer.analyse(topology, streams)
 
     expected = {}
 
@@ -56,7 +56,7 @@ def test_delay_calculation_3():
     streams = stream_parser.parse("./tests/inputs/streams/s_small.csv")    
 
     analyzer = Analyzer()
-    delays = analyzer.analyse(topology, streams)
+    delays, _ = analyzer.analyse(topology, streams)
 
     expected = {}
     expected["F0"] = round(10 ** 6 * (3200/BANDWIDTH + 2400/BANDWIDTH), 3)
