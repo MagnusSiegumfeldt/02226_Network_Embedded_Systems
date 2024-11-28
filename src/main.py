@@ -22,7 +22,10 @@ def main():
     
     analyzer = Analyzer()
     delays = analyzer.analyse(topology, streams)
-    print(delays)
+    
+    for k in delays.keys():
+        print(k + ":\t", delays[k])
+    
 
 
 
