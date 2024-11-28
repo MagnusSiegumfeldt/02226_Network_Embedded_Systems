@@ -1,0 +1,25 @@
+FIRST WTF
+WTF
+VLAN_0_Flow_0	7, 	|100|	 Delay: 0 	 [node1, sw_0, node0]
+WTF
+VLAN_0_Flow_1	5, 	|100|	 Delay: 0 	 [node1, sw_0, node0]
+WTF
+VLAN_0_Flow_2	3, 	|100|	 Delay: 0 	 [node1, sw_0, node0]
+WTF
+VLAN_0_Flow_3	1, 	|100|	 Delay: 0 	 [node1, sw_0, node0]
+WTF
+VLAN_0_Flow_4	7, 	|100|	 Delay: 0 	 [node2, sw_0, node0]
+WTF
+VLAN_0_Flow_5	5, 	|100|	 Delay: 0 	 [node2, sw_0, node0]
+WTF
+VLAN_0_Flow_6	3, 	|100|	 Delay: 0 	 [node2, sw_0, node0]
+WTF
+VLAN_0_Flow_7	1, 	|100|	 Delay: 0 	 [node2, sw_0, node0]
+WTF
+VLAN_0_Flow_8	7, 	|100|	 Delay: 0 	 [node3, sw_0, node0]
+WTF
+VLAN_0_Flow_9	5, 	|100|	 Delay: 0 	 [node3, sw_0, node0]
+WTF
+VLAN_0_Flow_10	3, 	|100|	 Delay: 0 	 [node3, sw_0, node0]
+WTF
+VLAN_0_Flow_11	1, 	|100|	 Delay: 0 	 [node3, sw_0, node0]

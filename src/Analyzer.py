@@ -62,7 +62,7 @@ def compute_hop_delay(topology, src : Switch, dst : Switch, stream : Stream):
         bj = j.size
         lj = j.size
 
-        Cj = list(filter(lambda x: x.pcp == stream.pcp and x != j, link.get_streams()))
+        Cj = list(filter(lambda x: x != j, I))
         bCj = sum(x.size for x in Cj)
 
         delay = (((bH + bCj + (bj - lj) + lL) / (r - rH)) + (lj / r))
