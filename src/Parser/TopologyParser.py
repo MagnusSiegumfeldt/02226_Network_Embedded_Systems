@@ -8,7 +8,6 @@ class TopologyParser:
         with open(file_name) as file:
             for line in file:
                 entries = line.strip().split(",")
-                print(entries)
 
                 type = entries[0]
                 if type == "SW":
