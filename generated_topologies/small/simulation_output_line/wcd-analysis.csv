@@ -1,0 +1,11 @@
+flowname,max_e2e,route,deadline
+Stream_1,22.552,"[ES_1, Switch_1, Switch_2, ES_2]",14699.0
+Stream_2,34.296,"[ES_2, Switch_2, Switch_3, ES_3]",7062.0
+Stream_3,41.096,"[ES_3, Switch_3, Switch_4, ES_4]",8692.0
+Stream_4,59.88,"[ES_4, Switch_4, Switch_5, Switch_6, Switch_7, ES_7]",6960.0
+Stream_5,40.32,"[ES_5, Switch_5, Switch_6, ES_6]",11723.0
+Stream_6,76.064,"[ES_6, Switch_6, Switch_5, Switch_4, Switch_3, ES_3]",15614.0
+Stream_7,31.184,"[ES_7, Switch_7, Switch_6, ES_6]",11400.0
+
+Mean E2E: 43.62742857142857
+Runtime in Seconds: 0.0007166250143200159
