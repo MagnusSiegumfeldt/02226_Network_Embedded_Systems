@@ -6,12 +6,12 @@ from Constants import *
 from Analyzer import Analyzer
 
 # Verifies that simple per hop delays are calculated correctly
-def test_delay_calculation():
+def test_delay_calculation_1():
     topology_parser = TopologyParser()
-    topology = topology_parser.parse("./tests/inputs/small_topology.csv")    
+    topology = topology_parser.parse("./tests/inputs/topologies/t_small.csv")    
 
     stream_parser = StreamParser()
-    streams = stream_parser.parse("./tests/inputs/delay1.csv")    
+    streams = stream_parser.parse("./tests/inputs/streams/s_delay1.csv")    
 
     analyzer = Analyzer()
     delays = analyzer.analyse(topology, streams)
