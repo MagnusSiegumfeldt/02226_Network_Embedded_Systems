@@ -12,7 +12,7 @@ def test_priorities_small():
     streams = stream_parser.parse("./tests/inputs/streams/s_small.csv")    
 
     analyzer = Analyzer()
-    delays = analyzer.analyse(topology, streams)
+    delays, _ = analyzer.analyse(topology, streams)
 
     assert(delays["F0"] <= delays["F1"] <= delays["F2"])
     assert(delays["F0"] <= delays["F1"] <= delays["F3"])
@@ -27,8 +27,8 @@ def test_priorities_compare():
     s2 = stream_parser.parse("./tests/inputs/streams/s_delay2.csv")    
 
     analyzer = Analyzer()
-    d1 = analyzer.analyse(topology, s1)
-    d2 = analyzer.analyse(topology, s2)
+    d1, _ = analyzer.analyse(topology, s1)
+    d2, _ = analyzer.analyse(topology, s2)
 
     assert(d1["F0"] < d2["F0"])
 
@@ -45,7 +45,7 @@ def test_priorities_simple_1():
     streams = stream_parser.parse("./tests/inputs/streams/s_simple1.csv")
     
     analyzer = Analyzer()
-    wcd = analyzer.analyse(topology, streams)
+    wcd, _ = analyzer.analyse(topology, streams)
     
     assert(wcd["S1"] >= wcd["S2"])
     assert(wcd["S1"] > wcd["S3"])
@@ -58,7 +58,7 @@ def test_priorities_simple_2():
     streams = stream_parser.parse("./tests/inputs/streams/s_simple2.csv")
     
     analyzer = Analyzer()
-    wcd = analyzer.analyse(topology, streams)
+    wcd, _ = analyzer.analyse(topology, streams)
     
     
     assert(wcd["S5"] < wcd["S4"] == wcd["S3"] < wcd["S2"] == wcd["S1"])
@@ -73,7 +73,7 @@ def test_priorities_simple_3():
     streams = stream_parser.parse("./tests/inputs/streams/s_simple3.csv")
     
     analyzer = Analyzer()
-    wcd = analyzer.analyse(topology, streams)
+    wcd, _ = analyzer.analyse(topology, streams)
     
     assert(wcd["S1"] == wcd["S2"])
     assert(wcd["S3"] == wcd["S4"] == wcd["S5"])

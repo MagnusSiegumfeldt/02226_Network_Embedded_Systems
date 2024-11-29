@@ -14,7 +14,7 @@ def test_delay_calculation_1():
     streams = stream_parser.parse("./tests/inputs/streams/s_delay1.csv")    
 
     analyzer = Analyzer()
-    delays = analyzer.analyse(topology, streams)
+    delays, _ = analyzer.analyse(topology, streams)
 
     expected = {}
     expected["F0"] = round(((240000 / (BANDWIDTH - (160000 / 4000 + 80000 / 3000))) + (320000/BANDWIDTH)) * 10 ** 6, 3)
@@ -36,7 +36,7 @@ def test_delay_calculation_2():
     streams = stream_parser.parse("./tests/inputs/streams/s_simple1.csv")    
 
     analyzer = Analyzer()
-    delays = analyzer.analyse(topology, streams)
+    delays, _ = analyzer.analyse(topology, streams)
 
     expected = {}
 
@@ -56,7 +56,7 @@ def test_delay_calculation_3():
     streams = stream_parser.parse("./tests/inputs/streams/s_small.csv")    
 
     analyzer = Analyzer()
-    delays = analyzer.analyse(topology, streams)
+    delays, _ = analyzer.analyse(topology, streams)
 
     expected = {}
     expected["F0"] = round(10 ** 6 * (3200/BANDWIDTH + 2400/BANDWIDTH), 3)
@@ -68,3 +68,25 @@ def test_delay_calculation_3():
     assert(delays["F1"] == expected["F1"])
     assert(delays["F2"] == expected["F2"])
     assert(delays["F3"] == expected["F3"])
+
+def test_delay_calculation_4():
+    topology_parser = TopologyParser()
+    topology = topology_parser.parse("./tests/inputs/topologies/t_medium.csv")    
+
+    stream_parser = StreamParser()
+    streams = stream_parser.parse("./tests/inputs/streams/s_medium.csv")    
+
+    analyzer = Analyzer()
+    delays, _ = analyzer.analyse(topology, streams)
+
+    expected = {}
+    p = 1000000
+    expected["S1"] = round(10**6 * (200/BANDWIDTH + 100/BANDWIDTH + 150/(BANDWIDTH-(150/p)) + 100/BANDWIDTH), 3)
+    expected["S2"] = round(10**6 * (100 / (BANDWIDTH - (100/p)) + 200/BANDWIDTH + 250/BANDWIDTH + 200/BANDWIDTH + 250/BANDWIDTH + 200/BANDWIDTH), 3)
+    expected["S3"] = round(10**6* (250/BANDWIDTH + 150/BANDWIDTH + 100/(BANDWIDTH - (100/p)) + 150/BANDWIDTH), 3)
+    expected["S4"] = round(10**6*(150/(BANDWIDTH - 150/p) + 250/BANDWIDTH + 200/BANDWIDTH + 250/BANDWIDTH + 200/BANDWIDTH + 250/BANDWIDTH),3)
+    
+    assert(delays["S1"] == expected["S1"])
+    assert(delays["S2"] == expected["S2"])
+    assert(delays["S3"] == expected["S3"])
+    assert(delays["S4"] == expected["S4"])

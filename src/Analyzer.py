@@ -31,6 +31,7 @@ class Analyzer:
                 link.add_stream(s)
 
         delays = {}
+        routes = {}
         for s in streams:
             stream_delay = 0
             route = shortest_path_manager.get_route(s.src, s.dest)
@@ -41,7 +42,8 @@ class Analyzer:
 
             d = round(stream_delay * 10 ** 6, 3)
             delays[s.name] = d
-        return delays
+            routes[s.name] = shortest_path_manager.get_route(s.src, s.dest)
+        return delays, routes
 
 def compute_hop_delay(topology, src : Switch, dst : Switch, stream : Stream):
     link = topology.get_link(src, dst)
