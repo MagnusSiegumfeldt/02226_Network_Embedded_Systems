@@ -1,5 +1,6 @@
 import csv
 import sys
+import pyperclip
 
 from Parser.ResultParser import ResultParser
 
@@ -46,43 +47,49 @@ class LatexEvalTableCreator():
     \\label{{tab:example1}}
 \\end{{table}}
 
-% Graph using the same data
+% Define data for the graph
+\\pgfplotstableread {{"StreamName   Calculated  Simulated\n"""
+                      
+        for stream_name, calc in stream_to_delays.items():
+            latex_string += f"""{stream_name.replace("_", "\\_")}   {calc["wcd"]}   {calc["omnetpp"]}\n"""
+        latex_string += f"""}}\\mydata\n"""
+
+
+        latex_string += f"""% Graph using the same data
 \\begin{{figure}}[H]
   \\centering
   \\begin{{tikzpicture}}
   \\begin{{axis}}[
-    width=12cm,
+    width=14cm,
     height=8cm,
-    ylabel={{Worst-case delay (\\(\\mu\\text{{s}}\\))}},
-    xlabel={{Graph type}},
+    ylabel={{Delay in (\\(\\mu\\text{{s}}\\))}},
+    xlabel={{Stream of stream.csv file}},
     xtick=data,
-    xticklabels={{Mesh, Path, Ring, Random geometric, Binomial, Expected ND}},
+    xticklabels={{{','.join(str(stream_name.replace('Stream_', '')) for stream_name, _ in stream_to_delays.items())}}},
     grid=both,
     legend pos=north east,
     x tick label style={{
-        rotate=30, % Rotate labels slightly for better spacing
-        anchor=north east, % Align labels to avoid overlap
+        rotate=45, % Rotate labels slightly for better spacing
+        anchor=east, % Align labels to avoid overlap
         font=\\small, % Adjust label font size
         yshift=-3pt % Add spacing between labels and axis
     }},
     xlabel style={{
-        at={{(axis description cs:0.5,-0.25)}}, % Move xlabel further down
         font=\\small 
-    }},
-    enlarge x limits=0.1 % Add horizontal spacing on both sides of the x-axis
+    }}
     ]
 
       % Plot Simulated Data
       \\addplot[color=blue, mark=*] table[x expr=\\coordindex, y=Simulated] {{\\mydata}};
-      \\addlegendentry{{Simulated worst-case delay}}
+      \\addlegendentry{{Simulated Mean Delays}}
 
       % Plot Calculated Data
       \\addplot[color=red, mark=square*] table[x expr=\\coordindex, y=Calculated] {{\\mydata}};
-      \\addlegendentry{{Calculated worst-case delay}}
+      \\addlegendentry{{Calculated Worst-Case Delays}}
 
       \\end{{axis}}
     \\end{{tikzpicture}}
-    \\caption{{Graph of simulated and calculated worst-case delays for different graph types}}
+    \\caption{{Graph of simulated mean and calculated worst-case delays}}
 \\end{{figure}}"""
 
 
@@ -96,7 +103,8 @@ def main():
         return
     latexETC = LatexEvalTableCreator()
     latex_string = latexETC.create_table(sys.argv[1], sys.argv[2])
-    print(latex_string)
+    pyperclip.copy(latex_string)
+    print("latex text has been copied to your clipboard! :)")
 
 
 if __name__ == "__main__":
