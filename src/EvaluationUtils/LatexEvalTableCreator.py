@@ -34,13 +34,13 @@ class LatexEvalTableCreator():
 
         latex_string = f"""
 \\begin{{table}}[H]
-  \\tcentering
+  \\centering
   \\caption{{Simulated worst-case delays}}
   \\begin{{tabular}}{{|c|c|c|}}
     \\hline
     \\textbf{{Stream number}} & \\textbf{{Calculated Worst-case delay}} & \\textbf{{Simulated Worst-case delay}} \\\\ \\hline \n""" 
         for stream_name, calcs in stream_to_delays.items():
-            latex_string += f"""    {stream_name} & {calcs["wcd"]}\\(\\mu\\text{{s}}\\)& {calcs["omnetpp"]}\\(\\mu\\text{{s}}\\) \\\\ \\hline \n"""
+            latex_string += f"""    {stream_name.replace('_', '\\_')} & {calcs["wcd"]}\\(\\mu\\text{{s}}\\)& {calcs["omnetpp"]}\\(\\mu\\text{{s}}\\) \\\\ \\hline \n"""
 
         latex_string += f"""  \\end{{tabular}}
     \\label{{tab:example1}}
