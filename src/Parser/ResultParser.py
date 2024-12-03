@@ -1,4 +1,5 @@
 import re
+import sys
 from Stream.Result import Result
 
 class ResultParser:
@@ -57,5 +58,18 @@ class ResultParser:
                         print(f"No entry found for app index={app_index_check}, dest={dest_es}")
         
         # Print final results
-        for stream in result:
-            print(stream)
+        #for stream in result:
+            #print(stream)
+
+        return result
+
+def main():
+    if len(sys.argv) != 2:
+        print("Usage: ResultParser.py path/to/file.sca")
+        return
+    rp = ResultParser()
+    rp.parse(sys.argv[1])
+    
+
+if __name__ =="__main__":
+    main()
