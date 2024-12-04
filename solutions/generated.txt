@@ -1,8 +1,0 @@
-[(ES_1, Switch_1), (Switch_1, Switch_3), (Switch_3, Switch_4), (Switch_4, ES_4)]
-Stream_1	4, 	|515|	 Delay: 40.864 	 [ES_1, Switch_1, Switch_3, Switch_4, ES_4]
-[(ES_2, Switch_2), (Switch_2, Switch_1), (Switch_1, ES_1)]
-Stream_2	5, 	|762|	 Delay: 27.264 	 [ES_2, Switch_2, Switch_1, ES_1]
-[(ES_3, Switch_3), (Switch_3, Switch_4), (Switch_4, ES_4)]
-Stream_3	6, 	|582|	 Delay: 22.576 	 [ES_3, Switch_3, Switch_4, ES_4]
-[(ES_4, Switch_4), (Switch_4, Switch_2), (Switch_2, Switch_1), (Switch_1, ES_1)]
-Stream_4	0, 	|561|	 Delay: 43.04 	 [ES_4, Switch_4, Switch_2, Switch_1, ES_1]

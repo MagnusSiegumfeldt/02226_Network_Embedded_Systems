@@ -1,0 +1,34 @@
+flowname,max_e2e,route,deadline
+Stream_1,84.896,"[ES_1, Switch_1, Switch_2, ES_4]",4755.0
+Stream_2,129.744,"[ES_2, Switch_1, Switch_2, Switch_3, Switch_4, Switch_5, Switch_6, ES_12]",15451.0
+Stream_3,335.8,"[ES_3, Switch_2, Switch_3, Switch_4, Switch_5, Switch_6, Switch_7, Switch_8, ES_16]",3672.0
+Stream_4,75.872,"[ES_4, Switch_2, Switch_3, ES_5]",18429.0
+Stream_5,378.984,"[ES_5, Switch_3, Switch_4, Switch_5, Switch_6, Switch_7, Switch_8, Switch_9, ES_18]",9860.0
+Stream_6,327.808,"[ES_6, Switch_3, Switch_2, Switch_1, Switch_15, Switch_14, Switch_13, Switch_12, ES_23]",5380.0
+Stream_7,143.32,"[ES_7, Switch_4, Switch_3, Switch_2, Switch_1, Switch_15, Switch_14, Switch_13, ES_25]",10114.0
+Stream_8,104.28,"[ES_8, Switch_4, Switch_5, Switch_6, ES_12]",13728.0
+Stream_9,111.384,"[ES_9, Switch_5, Switch_6, Switch_7, Switch_8, Switch_9, ES_18]",16603.0
+Stream_10,134.184,"[ES_10, Switch_5, Switch_4, Switch_3, Switch_2, ES_4]",1210.0
+Stream_11,337.04,"[ES_11, Switch_6, Switch_5, Switch_4, Switch_3, Switch_2, Switch_1, ES_2]",11160.0
+Stream_12,284.576,"[ES_12, Switch_6, Switch_7, Switch_8, Switch_9, Switch_10, Switch_11, Switch_12, ES_24]",15216.0
+Stream_13,337.608,"[ES_13, Switch_7, Switch_6, Switch_5, Switch_4, Switch_3, Switch_2, Switch_1, Switch_15, ES_29]",13338.0
+Stream_14,199.464,"[ES_14, Switch_7, Switch_8, Switch_9, Switch_10, Switch_11, Switch_12, ES_24]",3671.0
+Stream_15,98.384,"[ES_15, Switch_8, Switch_7, Switch_6, Switch_5, ES_10]",11873.0
+Stream_16,125.792,"[ES_16, Switch_8, Switch_9, Switch_10, Switch_11, Switch_12, ES_23]",16113.0
+Stream_17,235.936,"[ES_17, Switch_9, Switch_8, Switch_7, Switch_6, Switch_5, Switch_4, Switch_3, ES_5]",14104.0
+Stream_18,157.064,"[ES_18, Switch_9, Switch_8, Switch_7, Switch_6, Switch_5, Switch_4, Switch_3, ES_6]",5856.0
+Stream_19,123.536,"[ES_19, Switch_10, Switch_11, Switch_12, ES_23]",14405.0
+Stream_20,114.024,"[ES_20, Switch_10, Switch_11, Switch_12, Switch_13, Switch_14, Switch_15, ES_29]",2240.0
+Stream_21,184.376,"[ES_21, Switch_11, Switch_12, Switch_13, Switch_14, ES_27]",16678.0
+Stream_22,144.528,"[ES_22, Switch_11, Switch_12, Switch_13, Switch_14, Switch_15, Switch_1, ES_2]",14399.0
+Stream_23,301.36,"[ES_23, Switch_12, Switch_13, Switch_14, Switch_15, Switch_1, Switch_2, Switch_3, Switch_4, ES_7]",5878.0
+Stream_24,230.184,"[ES_24, Switch_12, Switch_13, Switch_14, Switch_15, Switch_1, Switch_2, ES_4]",18550.0
+Stream_25,48.384,"[ES_25, Switch_13, Switch_14, ES_27]",11827.0
+Stream_26,178.808,"[ES_26, Switch_13, Switch_12, Switch_11, Switch_10, Switch_9, Switch_8, ES_16]",10001.0
+Stream_27,428.928,"[ES_27, Switch_14, Switch_15, Switch_1, Switch_2, Switch_3, Switch_4, Switch_5, Switch_6, ES_11]",13651.0
+Stream_28,157.328,"[ES_28, Switch_14, Switch_13, Switch_12, Switch_11, Switch_10, Switch_9, ES_18]",3264.0
+Stream_29,157.008,"[ES_29, Switch_15, Switch_1, Switch_2, ES_4]",15970.0
+Stream_30,232.976,"[ES_30, Switch_15, Switch_14, Switch_13, Switch_12, Switch_11, ES_21]",15277.0
+
+Mean E2E: 196.78586666666666
+Runtime in Seconds: 0.0022287920000962913
