@@ -1,4 +1,5 @@
-# Tool for generating Latex Tables for Overleaf and their corresponding figures
+# Evaluation Tool
+Tool for generating Latex Tables for Overleaf and their corresponding figures.
 
 ## Setup
 ```
