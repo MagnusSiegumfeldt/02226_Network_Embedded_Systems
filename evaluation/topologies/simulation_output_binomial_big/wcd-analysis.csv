@@ -1,0 +1,34 @@
+flowname,max_e2e,route,deadline
+Stream_1,35.632,"[ES_1, Switch_1, Switch_4, ES_8]",5167.0
+Stream_2,58.696,"[ES_2, Switch_1, Switch_4, Switch_6, ES_12]",8002.0
+Stream_3,39.232,"[ES_3, Switch_2, Switch_4, ES_7]",9748.0
+Stream_4,112.496,"[ES_4, Switch_2, Switch_3, Switch_8, Switch_14, ES_27]",14665.0
+Stream_5,91.648,"[ES_5, Switch_3, Switch_8, Switch_14, ES_28]",3643.0
+Stream_6,88.432,"[ES_6, Switch_3, Switch_8, ES_15]",4122.0
+Stream_7,65.752,"[ES_7, Switch_4, Switch_6, Switch_14, ES_28]",15167.0
+Stream_8,75.408,"[ES_8, Switch_4, Switch_3, Switch_8, ES_15]",12161.0
+Stream_9,32.368,"[ES_9, Switch_5, Switch_1, ES_2]",14508.0
+Stream_10,60.48,"[ES_10, Switch_5, Switch_2, Switch_12, ES_24]",11538.0
+Stream_11,56.16,"[ES_11, Switch_6, Switch_4, Switch_3, ES_6]",6985.0
+Stream_12,49.344,"[ES_12, Switch_6, Switch_13, Switch_10, ES_19]",16391.0
+Stream_13,33.376,"[ES_13, Switch_7, Switch_14, ES_27]",13023.0
+Stream_14,48.568,"[ES_14, Switch_7, Switch_13, Switch_15, ES_30]",5716.0
+Stream_15,29.256,"[ES_15, Switch_8, Switch_13, ES_25]",17534.0
+Stream_16,36.584,"[ES_16, Switch_8, Switch_5, Switch_7, ES_14]",7195.0
+Stream_17,22.752,"[ES_17, Switch_9, Switch_4, ES_7]",14842.0
+Stream_18,26.744,"[ES_18, Switch_9, Switch_8, ES_16]",9942.0
+Stream_19,48.52,"[ES_19, Switch_10, Switch_5, Switch_2, ES_4]",8561.0
+Stream_20,34.848,"[ES_20, Switch_10, Switch_13, Switch_6, ES_12]",1809.0
+Stream_21,53.64,"[ES_21, Switch_11, Switch_12, Switch_2, ES_4]",14303.0
+Stream_22,39.88,"[ES_22, Switch_11, Switch_8, ES_15]",6725.0
+Stream_23,47.4,"[ES_23, Switch_12, Switch_13, Switch_15, ES_29]",7941.0
+Stream_24,57.736,"[ES_24, Switch_12, Switch_2, Switch_3, ES_6]",8853.0
+Stream_25,53.584,"[ES_25, Switch_13, Switch_5, Switch_2, ES_3]",18348.0
+Stream_26,28.472,"[ES_26, Switch_13, Switch_5, ES_9]",18143.0
+Stream_27,65.928,"[ES_27, Switch_14, Switch_8, ES_16]",9872.0
+Stream_28,64.952,"[ES_28, Switch_14, Switch_8, Switch_3, ES_5]",12906.0
+Stream_29,50.752,"[ES_29, Switch_15, Switch_8, Switch_3, ES_6]",10632.0
+Stream_30,50.328,"[ES_30, Switch_15, Switch_13, Switch_12, ES_24]",5682.0
+
+Mean E2E: 51.9656
+Runtime in Seconds: 0.001802499988116324
